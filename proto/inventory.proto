@@ -4,6 +4,10 @@ service InventoryService {
     rpc SearchAllProducts(Empty) returns (ProductsResponse) {}
 }
 
+message Payload {
+    int32 id = 1;
+}
+
 message Empty{}
 
 message ProductResponse {
@@ -15,6 +19,24 @@ message ProductResponse {
     string author = 6;
 }
 
+service InventoryService {
+    rpc SearchAllProducts(Empty) returns (ProductsResponse) {}
+    rpc SearchProductByID(Payload) returns (ProductResponse) {}
+}
+
 message ProductsResponse {
     repeated ProductResponse products = 1;
+}
+
+message ProductsResponse {
+    repeated ProductResponse products = 1;
+}
+
+message ProductResponse {
+    int32 id = 1;
+    string name = 2;
+    int32 quantity = 3;
+    float price = 4;
+    string photo = 5;
+    string author = 6;
 }
